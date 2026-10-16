@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>MAPVERSE — Roblox Dimensions &amp; Experiences Discovery</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;600;700&amp;family=Space+Grotesk:wght@500;600;700;800&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "background": "#12131a",
+            "on-primary": "#00363a",
+            "surface-container-highest": "#34343c",
+            "inverse-on-surface": "#2f3038",
+            "surface-bright": "#383941",
+            "on-tertiary-fixed-variant": "#8f0041",
+            "surface": "#12131a",
+            "on-tertiary-fixed": "#3f0019",
+            "tertiary-container": "#ffccd6",
+            "surface-container-high": "#292931",
+            "on-surface-variant": "#b9cacb",
+            "surface-variant": "#34343c",
+            "on-primary-container": "#006970",
+            "on-tertiary": "#66002c",
+            "on-secondary": "#490080",
+            "inverse-primary": "#006970",
+            "secondary-container": "#6f00be",
+            "primary": "#dbfcff",
+            "surface-container": "#1e1f27",
+            "on-secondary-container": "#d6a9ff",
+            "surface-dim": "#12131a",
+            "outline-variant": "#3b494b",
+            "error": "#ffb4ab",
+            "on-secondary-fixed-variant": "#6900b3",
+            "primary-fixed": "#7df4ff",
+            "primary-container": "#00f0ff",
+            "error-container": "#93000a",
+            "inverse-surface": "#e3e1ec",
+            "primary-fixed-dim": "#00dbe9",
+            "on-surface": "#e3e1ec",
+            "on-primary-fixed-variant": "#004f54",
+            "tertiary": "#fff3f4",
+            "surface-tint": "#00dbe9",
+            "on-background": "#e3e1ec",
+            "surface-container-low": "#1a1b22",
+            "on-tertiary-container": "#bb0058",
+            "tertiary-fixed-dim": "#ffb1c3",
+            "secondary": "#ddb7ff",
+            "secondary-fixed-dim": "#ddb7ff",
+            "on-error": "#690005",
+            "surface-container-lowest": "#0d0e15",
+            "secondary-fixed": "#f0dbff",
+            "outline": "#849495",
+            "on-secondary-fixed": "#2c0051",
+            "tertiary-fixed": "#ffd9e0",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed": "#002022"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-xl": "2.5rem",
+            "gutter": "1.5rem",
+            "margin-lg": "4rem",
+            "margin": "2rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "gutter-lg": "2rem",
+            "gutter-sm": "1rem",
+            "space-xs": "0.25rem",
+            "margin-sm": "1rem"
+          },
+          "fontFamily": {
+            "label-md": ["Space Mono"],
+            "headline-xl": ["Space Grotesk"],
+            "body-md": ["Chivo"],
+            "headline-xl-mobile": ["Space Grotesk"],
+            "headline-sm": ["Space Grotesk"],
+            "body-lg": ["Chivo"],
+            "headline-lg": ["Space Grotesk"],
+            "headline-lg-mobile": ["Space Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "label-sm": ["Space Mono"],
+            "label-lg": ["Space Mono"],
+            "body-sm": ["Chivo"]
+          },
+          "fontSize": {
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+            "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-xl-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "0", "fontWeight": "700" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Custom cyber & HUD aesthetic utilities */
+    .cyber-chamfer {
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+    }
+    .cyber-chamfer-btn {
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+    }
+    .cyber-scanline {
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 240, 255, 0.04) 50%);
+      background-size: 100% 4px;
+    }
+    .glow-cyan {
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.35), inset 0 0 10px rgba(0, 240, 255, 0.15);
+    }
+    .glow-magenta {
+      box-shadow: 0 0 18px rgba(255, 0, 122, 0.4), inset 0 0 10px rgba(255, 0, 122, 0.15);
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+    .status-pulse {
+      animation: pulse-subtle 1.8s infinite ease-in-out;
+    }
+    @keyframes warp-lines {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+    .animate-warp-rays {
+      animation: warp-lines 1.2s infinite linear;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md antialiased min-h-screen flex flex-col items-center justify-start relative selection:bg-primary-container selection:text-on-primary">
+<!-- Ambient Holographic Backdrops -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute -top-32 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary-container/10 rounded-full blur-[100px]"></div>
+<div class="absolute top-[40%] -right-24 w-80 h-80 bg-secondary-container/20 rounded-full blur-[110px]"></div>
+<div class="absolute bottom-20 -left-20 w-80 h-80 bg-primary-fixed-dim/10 rounded-full blur-[90px]"></div>
+<div class="absolute inset-0 cyber-scanline opacity-75"></div>
+</div>
+<!-- Mobile Screen Container (Standard Phone Frame 390-430px max width) -->
+<div class="w-full max-w-[430px] min-h-screen bg-background/90 flex flex-col relative z-10 shadow-2xl pb-24 overflow-x-hidden">
+<!-- Top Cyber HUD Navigation (TopAppBar Shared Component Anchored) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter-sm h-16 bg-surface-container-low/80 backdrop-blur-md shadow-md border-b border-outline-variant/30 max-w-[430px] mx-auto right-0">
+<!-- Leading: Hub Icon & Brand Logo -->
+<div class="flex items-center space-x-2">
+<button class="w-9 h-9 rounded flex items-center justify-center bg-surface-container-high text-primary-container hover:text-primary hover:bg-surface-container-highest transition-colors active:scale-95 duration-150 relative" id="hubTriggerBtn">
+<span class="material-symbols-outlined text-[20px]">hub</span>
+<span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-primary-container rounded-full status-pulse"></span>
+</button>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold tracking-wider text-primary-container leading-none">MAPVERSE</span>
+<span class="font-label-sm text-[8px] text-on-surface-variant tracking-widest uppercase">HUD v4.8 • LIVE</span>
+</div>
+</div>
+<!-- Action Cluster: SFX toggle + Robux Wallet + Wishlist + Cart Trailing -->
+<div class="flex items-center space-x-2">
+<!-- SFX Toggle -->
+<button class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all" id="sfxBtn" title="Audio Telemetry">
+<span class="material-symbols-outlined text-[18px]" id="sfxIcon">volume_up</span>
+</button>
+<!-- Robux Wallet Pill -->
+<div class="flex items-center space-x-1 px-2 py-1 rounded bg-surface-container-high/90 border border-primary-container/40 glow-cyan">
+<span class="text-primary-container font-bold text-[11px]">⏣</span>
+<span class="font-label-sm text-[11px] text-primary font-bold tracking-tight">14,850</span>
+</div>
+<!-- Wishlist Icon Badge -->
+<button class="relative w-8 h-8 rounded bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary active:scale-95 transition-all" id="wishlistTriggerBtn">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span class="absolute -top-1 -right-1 bg-[#FF007A] text-white text-[9px] font-label-sm w-4 h-4 rounded-full flex items-center justify-center font-bold" id="wishlistCountBadge">3</span>
+</button>
+<!-- Trailing: Shopping Bag (Cart Trigger) -->
+<button class="relative w-9 h-9 rounded bg-surface-container-high flex items-center justify-center text-primary-container hover:text-primary hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" id="cartDrawerBtn">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-primary-container text-on-primary font-label-sm text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold" id="cartCountBadge">2</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full pt-20 px-4 space-y-6">
+<!-- Section 1: Hero Metaverse Gateway -->
+<section class="space-y-4 pt-1">
+<div class="relative rounded-lg p-4 bg-gradient-to-br from-surface-container-high/90 via-surface-container/70 to-surface-container-lowest border border-primary-container/30 overflow-hidden">
+<div class="absolute -right-8 -bottom-8 w-32 h-32 bg-primary-container/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center space-x-2 mb-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-label-sm bg-primary-container/20 text-primary-container border border-primary-container/40">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container mr-1.5 status-pulse"></span>
+              DIMENSIONAL GATEWAY
+            </span>
+<span class="text-on-surface-variant text-[11px] font-label-sm">PING: 18ms</span>
+</div>
+<h1 class="font-headline-xl-mobile text-headline-xl-mobile text-primary font-extrabold uppercase tracking-tight leading-none bg-gradient-to-r from-primary via-primary-fixed to-secondary bg-clip-text text-transparent">
+            EXPLORE THE MAPVERSE
+          </h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5">
+            Access 250,000+ Community Roblox Dimensions, high-stakes raids &amp; VIP creator experiences.
+          </p>
+<!-- Glowing Cyber Search Input -->
+<div class="mt-4 relative">
+<div class="relative flex items-center bg-surface-container-lowest/90 rounded border border-white/15 focus-within:border-primary-container focus-within:glow-cyan transition-all">
+<span class="material-symbols-outlined text-primary-container pl-3 text-[20px]">search</span>
+<input autocomplete="off" class="w-full bg-transparent px-3 py-2.5 text-on-surface placeholder:text-on-surface-variant/60 text-sm focus:outline-none font-body-md" id="dimensionSearchInput" placeholder="Search dimensions, raids, VIP maps..." type="text"/>
+<button class="hidden pr-3 text-on-surface-variant hover:text-primary" id="clearSearchBtn">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Auto-Suggestions Popover Dropdown -->
+<div class="hidden absolute top-full left-0 right-0 mt-1.5 bg-surface-container-high/95 backdrop-blur-xl border border-primary-container/40 rounded shadow-2xl z-40 overflow-hidden divide-y divide-white/5" id="searchSuggestions">
+<div class="suggestion-item p-2.5 px-3 flex items-center justify-between hover:bg-surface-container-highest cursor-pointer transition-colors" data-value="Neon Cyberpunk 2099">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary-container text-[16px]">travel_explore</span>
+<span class="text-xs font-label-md text-on-surface">Neon Cyberpunk 2099</span>
+</div>
+<span class="text-[10px] font-label-sm text-primary-fixed">94k Online</span>
+</div>
+<div class="suggestion-item p-2.5 px-3 flex items-center justify-between hover:bg-surface-container-highest cursor-pointer transition-colors" data-value="Silent Hollows">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-[#FF007A] text-[16px]">skull</span>
+<span class="text-xs font-label-md text-on-surface">Silent Hollows: The Ritual</span>
+</div>
+<span class="text-[10px] font-label-sm text-[#FF007A]">61k Online</span>
+</div>
+<div class="suggestion-item p-2.5 px-3 flex items-center justify-between hover:bg-surface-container-highest cursor-pointer transition-colors" data-value="Quantum Bunker">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary-container text-[16px]">security</span>
+<span class="text-xs font-label-md text-on-surface">Quantum Bunker Survival</span>
+</div>
+<span class="text-[10px] font-label-sm text-primary-fixed">128k Online</span>
+</div>
+<div class="suggestion-item p-2.5 px-3 flex items-center justify-between hover:bg-surface-container-highest cursor-pointer transition-colors" data-value="Infinite Void Parkour">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">speed</span>
+<span class="text-xs font-label-md text-on-surface">Infinite Void Parkour: Reborn</span>
+</div>
+<span class="text-[10px] font-label-sm text-secondary">45k Online</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Dimension Quick-Warp Horizontal Carousel -->
+<div class="space-y-2">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center">
+<span class="material-symbols-outlined text-[16px] text-primary-container mr-1.5">sensors</span>
+              WARP FREQUENCIES
+            </span>
+<span class="font-label-sm text-label-sm text-primary-fixed">520K ONLINE NOW</span>
+</div>
+<div class="flex space-x-2.5 overflow-x-auto hide-scrollbar py-1 px-0.5">
+<!-- Adventure -->
+<button class="portal-chip shrink-0 flex items-center space-x-2 px-3 py-2 rounded bg-surface-container-high/80 border border-primary-container/30 hover:border-primary-container active:scale-95 transition-all glow-cyan" data-filter="Adventure">
+<span class="material-symbols-outlined text-primary-container text-[18px]">explore</span>
+<div class="text-left">
+<p class="font-label-md text-[11px] text-on-surface leading-tight">Adventure</p>
+<p class="font-label-sm text-[9px] text-[#39FF14] flex items-center">
+<span class="w-1.5 h-1.5 rounded-full bg-[#39FF14] mr-1 status-pulse"></span>94K Live
+                </p>
+</div>
+</button>
+<!-- Horror -->
+<button class="portal-chip shrink-0 flex items-center space-x-2 px-3 py-2 rounded bg-surface-container-high/80 border border-white/10 hover:border-[#FF007A] active:scale-95 transition-all" data-filter="Horror">
+<span class="material-symbols-outlined text-[#FF007A] text-[18px]">sentiment_very_dissatisfied</span>
+<div class="text-left">
+<p class="font-label-md text-[11px] text-on-surface leading-tight">Horror</p>
+<p class="font-label-sm text-[9px] text-[#39FF14] flex items-center">
+<span class="w-1.5 h-1.5 rounded-full bg-[#39FF14] mr-1 status-pulse"></span>61K Live
+                </p>
+</div>
+</button>
+<!-- Survival -->
+<button class="portal-chip shrink-0 flex items-center space-x-2 px-3 py-2 rounded bg-surface-container-high/80 border border-white/10 hover:border-primary-container active:scale-95 transition-all" data-filter="Survival">
+<span class="material-symbols-outlined text-primary-container text-[18px]">shield</span>
+<div class="text-left">
+<p class="font-label-md text-[11px] text-on-surface leading-tight">Survival</p>
+<p class="font-label-sm text-[9px] text-[#39FF14] flex items-center">
+<span class="w-1.5 h-1.5 rounded-full bg-[#39FF14] mr-1 status-pulse"></span>128K Live
+                </p>
+</div>
+</button>
+<!-- Parkour -->
+<button class="portal-chip shrink-0 flex items-center space-x-2 px-3 py-2 rounded bg-surface-container-high/80 border border-white/10 hover:border-secondary active:scale-95 transition-all" data-filter="Parkour">
+<span class="material-symbols-outlined text-secondary text-[18px]">sprint</span>
+<div class="text-left">
+<p class="font-label-md text-[11px] text-on-surface leading-tight">Parkour</p>
+<p class="font-label-sm text-[9px] text-[#39FF14] flex items-center">
+<span class="w-1.5 h-1.5 rounded-full bg-[#39FF14] mr-1 status-pulse"></span>45K Live
+                </p>
+</div>
+</button>
+<!-- Sci-Fi -->
+<button class="portal-chip shrink-0 flex items-center space-x-2 px-3 py-2 rounded bg-surface-container-high/80 border border-white/10 hover:border-primary-container active:scale-95 transition-all" data-filter="Sci-Fi">
+<span class="material-symbols-outlined text-primary-container text-[18px]">rocket_launch</span>
+<div class="text-left">
+<p class="font-label-md text-[11px] text-on-surface leading-tight">Sci-Fi</p>
+<p class="font-label-sm text-[9px] text-[#39FF14] flex items-center">
+<span class="w-1.5 h-1.5 rounded-full bg-[#39FF14] mr-1 status-pulse"></span>82K Live
+                </p>
+</div>
+</button>
+</div>
+</div>
+</section>
+<!-- Section 2: Interactive 3-Step Warp Quiz ("Find Your Next Adventure") -->
+<section class="rounded-lg p-4 bg-surface-container-low border border-primary-container/30 relative overflow-hidden">
+<!-- Neon Decorative header HUD -->
+<div class="flex items-center justify-between pb-3 border-b border-white/10">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">psychology</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">WARP QUIZ</span>
+</div>
+<span class="font-label-sm text-[11px] text-primary-container border border-primary-container/40 px-2 py-0.5 rounded bg-primary-container/10" id="quizStepIndicator">
+            STEP 1 / 3
+          </span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="h-full bg-primary-container transition-all duration-300 w-1/3" id="quizProgressBar"></div>
+</div>
+<!-- Quiz Step Container -->
+<div class="mt-4" id="quizContent">
+<!-- Step 1: Vibe / Mood -->
+<div class="quiz-step space-y-3" id="quizStep1">
+<p class="font-label-md text-xs text-on-surface uppercase tracking-wider">CHOOSE YOUR DESIRED REALM VIBE:</p>
+<div class="grid grid-cols-2 gap-2">
+<button class="quiz-btn p-3 rounded bg-surface-container border border-white/10 hover:border-primary-container hover:bg-surface-container-high text-left active:scale-95 transition-all" onclick="handleQuizAnswer(1, 'Thrill')">
+<span class="material-symbols-outlined text-primary-container text-[20px] mb-1">bolt</span>
+<p class="font-label-md text-xs text-on-surface">Adrenaline Thrill</p>
+<p class="text-[10px] text-on-surface-variant font-body-sm mt-0.5">High stakes &amp; combat</p>
+</button>
+<button class="quiz-btn p-3 rounded bg-surface-container border border-white/10 hover:border-[#FF007A] hover:bg-surface-container-high text-left active:scale-95 transition-all" onclick="handleQuizAnswer(1, 'Horror')">
+<span class="material-symbols-outlined text-[#FF007A] text-[20px] mb-1">psychology_alt</span>
+<p class="font-label-md text-xs text-on-surface">Dark Terror</p>
+<p class="text-[10px] text-on-surface-variant font-body-sm mt-0.5">Eerie psychological lore</p>
+</button>
+<button class="quiz-btn p-3 rounded bg-surface-container border border-white/10 hover:border-secondary hover:bg-surface-container-high text-left active:scale-95 transition-all" onclick="handleQuizAnswer(1, 'Cozy')">
+<span class="material-symbols-outlined text-secondary text-[20px] mb-1">spa</span>
+<p class="font-label-md text-xs text-on-surface">Cozy Social</p>
+<p class="text-[10px] text-on-surface-variant font-body-sm mt-0.5">Chill vibes with friends</p>
+</button>
+<button class="quiz-btn p-3 rounded bg-surface-container border border-white/10 hover:border-primary-container hover:bg-surface-container-high text-left active:scale-95 transition-all" onclick="handleQuizAnswer(1, 'Skill')">
+<span class="material-symbols-outlined text-primary-container text-[20px] mb-1">precision_manufacturing</span>
+<p class="font-label-md text-xs text-on-surface">Pure Skill</p>
+<p class="text-[10px] text-on-surface-variant font-body-sm mt-0.5">Precision mechanics</p>
+</button>
+</div>
+</div>
+<!-- Step 2: Skill Level (Hidden initially) -->
+<div class="quiz-step hidden space-y-3" id="quizStep2">
+<p class="font-label-md text-xs text-on-surface uppercase tracking-wider">SELECT TARGET COMPLEXITY:</p>
+<div class="space-y-2">
+<button class="w-full p-2.5 rounded bg-surface-container border border-white/10 hover:border-primary-container flex items-center justify-between text-left active:scale-95 transition-all" onclick="handleQuizAnswer(2, 'Casual')">
+<div>
+<p class="font-label-md text-xs text-on-surface">Casual Explorer</p>
+<p class="text-[10px] text-on-surface-variant font-body-sm">Relaxed progression, zero stress</p>
+</div>
+<span class="font-label-sm text-[10px] text-primary-fixed bg-surface-container-highest px-2 py-0.5 rounded">TIER 1</span>
+</button>
+<button class="w-full p-2.5 rounded bg-surface-container border border-white/10 hover:border-primary-container flex items-center justify-between text-left active:scale-95 transition-all" onclick="handleQuizAnswer(2, 'Veteran')">
+<div>
+<p class="font-label-md text-xs text-on-surface">Seasoned Veteran</p>
+<p class="text-[10px] text-on-surface-variant font-body-sm">Balanced challenge &amp; bosses</p>
+</div>
+<span class="font-label-sm text-[10px] text-primary-fixed bg-surface-container-highest px-2 py-0.5 rounded">TIER 2</span>
+</button>
+<button class="w-full p-2.5 rounded bg-surface-container border border-white/10 hover:border-[#FF007A] flex items-center justify-between text-left active:scale-95 transition-all" onclick="handleQuizAnswer(2, 'Hardcore')">
+<div>
+<p class="font-label-md text-xs text-on-surface">Hardcore Speedrunner</p>
+<p class="text-[10px] text-on-surface-variant font-body-sm">Perma-death / extreme twitch reaction</p>
+</div>
+<span class="font-label-sm text-[10px] text-[#FF007A] bg-surface-container-highest px-2 py-0.5 rounded">TIER 3</span>
+</button>
+</div>
+</div>
+<!-- Step 3: Playtime Duration -->
+<div class="quiz-step hidden space-y-3" id="quizStep3">
+<p class="font-label-md text-xs text-on-surface uppercase tracking-wider">AVAILABLE TELEPORT DURATION:</p>
+<div class="grid grid-cols-3 gap-2">
+<button class="p-3 rounded bg-surface-container border border-white/10 hover:border-primary-container text-center active:scale-95 transition-all" onclick="handleQuizAnswer(3, 'Quick')">
+<span class="material-symbols-outlined text-primary-container text-[20px] mb-1">timer</span>
+<p class="font-label-md text-[11px] text-on-surface">10m Blitz</p>
+</button>
+<button class="p-3 rounded bg-surface-container border border-white/10 hover:border-primary-container text-center active:scale-95 transition-all" onclick="handleQuizAnswer(3, 'Raid')">
+<span class="material-symbols-outlined text-primary-container text-[20px] mb-1">hourglass_top</span>
+<p class="font-label-md text-[11px] text-on-surface">30m Raid</p>
+</button>
+<button class="p-3 rounded bg-surface-container border border-white/10 hover:border-primary-container text-center active:scale-95 transition-all" onclick="handleQuizAnswer(3, 'Endless')">
+<span class="material-symbols-outlined text-primary-container text-[20px] mb-1">all_inclusive</span>
+<p class="font-label-md text-[11px] text-on-surface">Endless</p>
+</button>
+</div>
+</div>
+<!-- Quiz Loading State -->
+<div class="quiz-step hidden py-8 text-center space-y-3" id="quizLoading">
+<div class="inline-block relative">
+<span class="material-symbols-outlined text-primary-container text-[42px] animate-spin">cyclone</span>
+<div class="absolute inset-0 bg-primary-container/20 rounded-full blur-md"></div>
+</div>
+<p class="font-label-md text-xs text-primary-fixed tracking-widest uppercase">CALCULATING DIMENSION FREQUENCY...</p>
+<p class="font-label-sm text-[10px] text-on-surface-variant">Calibrating sub-space coordinates</p>
+</div>
+<!-- Quiz Result Matched Experience -->
+<div class="quiz-step hidden space-y-3" id="quizResult">
+<div class="p-3 rounded bg-surface-container-high border border-primary-container glow-cyan">
+<div class="flex items-center justify-between text-xs font-label-sm text-[#39FF14] mb-1">
+<span class="flex items-center"><span class="w-2 h-2 rounded-full bg-[#39FF14] mr-1 status-pulse"></span> 99.4% MATCH CONFIRMED</span>
+<span class="text-on-surface-variant">PORTAL #709</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold" id="quizResultTitle">Neon Cyberpunk 2099: Underworld</h3>
+<p class="font-body-sm text-xs text-on-surface-variant mt-1" id="quizResultDesc">Raytraced vertical megacity with high-speed hovercraft chases and cyberware augments.</p>
+<div class="mt-3 flex items-center space-x-2">
+<button class="flex-1 py-2 px-3 rounded bg-primary-container text-on-primary font-label-md text-xs font-bold uppercase tracking-wider cyber-chamfer-btn hover:bg-primary transition-all active:scale-95 shadow" onclick="openMapDetails(1)">
+                  Teleport Now
+                </button>
+<button class="py-2 px-3 rounded bg-surface-container border border-white/20 text-on-surface font-label-sm text-xs hover:border-white transition-all" onclick="resetQuiz()">
+                  Retake
+                </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Interactive Discovery Catalog & Filter Matrix -->
+<section class="space-y-4">
+<!-- Section Header with Count & Sort -->
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold uppercase tracking-tight">EXPERIENCES</h2>
+<p class="font-label-sm text-[10px] text-on-surface-variant">VERIFIED ARCHIVES // <span id="filteredCountText">5 AVAILABLE</span></p>
+</div>
+<!-- Sort Dropdown HUD Style -->
+<div class="relative">
+<select class="bg-surface-container-high text-on-surface font-label-sm text-[11px] rounded border border-white/10 px-2.5 py-1.5 focus:border-primary-container focus:outline-none pr-7 appearance-none" id="sortSelect" onchange="applySorting(this.value)">
+<option value="popularity">Popularity</option>
+<option value="rating">Highest Rated</option>
+<option value="price-asc">Price: Low to High</option>
+</select>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant absolute right-1.5 top-2 pointer-events-none">unfold_more</span>
+</div>
+</div>
+<!-- Filter Chips Row (Horizontal Scroll) -->
+<div class="flex space-x-2 overflow-x-auto hide-scrollbar pb-1">
+<button class="category-filter-btn shrink-0 px-3 py-1.5 rounded font-label-sm text-[11px] bg-primary-container text-on-primary font-bold border border-primary-container shadow-sm transition-all" data-cat="All" onclick="filterCategory('All')">
+            All Realms
+          </button>
+<button class="category-filter-btn shrink-0 px-3 py-1.5 rounded font-label-sm text-[11px] bg-surface-container text-on-surface-variant hover:text-white border border-white/10 hover:border-white/30 transition-all" data-cat="Trending" onclick="filterCategory('Trending')">
+            Top Trending
+          </button>
+<button class="category-filter-btn shrink-0 px-3 py-1.5 rounded font-label-sm text-[11px] bg-surface-container text-on-surface-variant hover:text-white border border-white/10 hover:border-white/30 transition-all" data-cat="Free" onclick="filterCategory('Free')">
+            Free-to-Play
+          </button>
+<button class="category-filter-btn shrink-0 px-3 py-1.5 rounded font-label-sm text-[11px] bg-surface-container text-on-surface-variant hover:text-white border border-white/10 hover:border-white/30 transition-all" data-cat="Hardcore" onclick="filterCategory('Hardcore')">
+            Hardcore
+          </button>
+<button class="category-filter-btn shrink-0 px-3 py-1.5 rounded font-label-sm text-[11px] bg-surface-container text-on-surface-variant hover:text-white border border-white/10 hover:border-white/30 transition-all" data-cat="Verified" onclick="filterCategory('Verified')">
+            Verified Studios
+          </button>
+</div>
+<!-- Map Cards Array (Bento Style Cards Grid) -->
+<div class="space-y-4" id="mapCardsGrid">
+<!-- Card 1: Neon Cyberpunk 2099 -->
+<article class="map-card group rounded-lg bg-surface-container-low border border-white/10 hover:border-primary-container/60 transition-all duration-200 overflow-hidden shadow-lg" data-category="Sci-Fi Trending Verified" data-difficulty="Medium" data-price="350" data-rating="4.9" data-title="Neon Cyberpunk 2099: Underworld">
+<div class="relative w-full h-44 overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A vivid, high-octane cyberpunk Roblox metaverse realm featuring soaring rain-slicked skyscrapers bathed in brilliant cyan and magenta neon holographic advertisements. Flying cyber-vehicles streak across volumetric fog with light trails against an obsidian dark sci-fi night sky. Sharp digital HUD aesthetic with high visual fidelity and futuristic game atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-qKWrfu_OzoxWtAEBLaPJuJl5jcO2U5XZ0T76qKDKLA6CTKXBzz6CNU7cqdMSSozpudJXqM5I-OTbLEkFN52j2fWEXSF2n0OUUIceSYJo8xuanShtFdjCYSUZ6hYzGl-Gkx_zeSTVbgOkjw7A-w6feKBBNHulL2DSvPxfgbGcPYfyUWuJr-IjhvtDSq9luhxEJ8bRPwkQ_iOVomHFNVu9plzgv4hno7KcmyE9f0aJSd5UTrrxj4jG"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-black/40"></div>
+<!-- Live Counter & Ping Badge -->
+<div class="absolute top-2.5 left-2.5 flex items-center space-x-1.5 bg-surface-container-lowest/80 backdrop-blur-md px-2 py-1 rounded border border-white/10">
+<span class="w-2 h-2 rounded-full bg-[#39FF14] status-pulse"></span>
+<span class="font-label-sm text-[10px] text-white">42.5k playing</span>
+</div>
+<!-- Top-right Favorite Heart Button -->
+<button class="fav-btn absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md border border-white/15 flex items-center justify-center text-white hover:text-[#FF007A] active:scale-90 transition-all" onclick="toggleFavorite(this, 1)">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<!-- Chamfer Rank Badge -->
+<div class="absolute bottom-2 left-2.5 bg-primary-container text-on-primary font-label-sm text-[10px] font-bold px-2 py-0.5 rounded cyber-chamfer">
+                RANK #1 TRENDING
+              </div>
+</div>
+<!-- Card Body -->
+<div class="p-3.5 space-y-3">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-headline-sm text-[18px] text-on-surface font-bold leading-snug group-hover:text-primary transition-colors">
+                    Neon Cyberpunk 2099: Underworld
+                  </h3>
+<div class="flex items-center space-x-1.5 mt-0.5">
+<span class="font-label-sm text-[11px] text-on-surface-variant">by NexusBuilds</span>
+<span class="material-symbols-outlined text-primary-container text-[14px]" title="Verified Creator">verified</span>
+</div>
+</div>
+<div class="flex items-center space-x-1 bg-surface-container-high px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px] text-yellow-400" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-[11px] text-white">4.9</span>
+<span class="text-[9px] text-on-surface-variant">(342k)</span>
+</div>
+</div>
+<!-- Meta pills: Difficulty + Tags -->
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center space-x-1.5">
+<span class="text-[10px] font-label-sm text-on-surface-variant">DIFFICULTY:</span>
+<div class="flex space-x-1" title="Medium Difficulty">
+<span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+<span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+<span class="w-2 h-2 rounded-full bg-white/20"></span>
+</div>
+<span class="font-label-sm text-[10px] text-yellow-400">MED</span>
+</div>
+<div class="flex space-x-1">
+<span class="text-[9px] font-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-primary-fixed border border-primary-container/20">Raytracing</span>
+<span class="text-[9px] font-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-secondary border border-secondary/20">RPG</span>
+</div>
+</div>
+<!-- Card Action Row -->
+<div class="pt-2 border-t border-white/5 flex items-center justify-between">
+<div class="flex items-center space-x-1">
+<span class="font-label-md text-xs text-primary-container">⏣ 350 R$</span>
+</div>
+<div class="flex items-center space-x-2">
+<button class="px-2.5 py-1.5 rounded bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-sm text-[10px] border border-white/10 active:scale-95 transition-all" onclick="openMapDetails(1)">
+                    SPEC INTEL
+                  </button>
+<button class="px-3 py-1.5 rounded bg-primary-container hover:bg-primary text-on-primary font-label-md text-[11px] font-bold cyber-chamfer-btn active:scale-95 transition-all" onclick="addToCart({id: 1, title: 'Neon Cyberpunk 2099', price: 350, creator: 'NexusBuilds'})">
+                    WARP PASS
+                  </button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2: Silent Hollows: The Ritual -->
+<article class="map-card group rounded-lg bg-surface-container-low border border-white/10 hover:border-[#FF007A]/60 transition-all duration-200 overflow-hidden shadow-lg" data-category="Horror Hardcore Free" data-difficulty="Hardcore" data-price="0" data-rating="4.8" data-title="Silent Hollows: The Ritual">
+<div class="relative w-full h-44 overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="An eerie, dark psychological horror forest realm in Roblox with twisted obsidian trees enveloped in crimson spectral fog. Ancient luminescent glyphs glow on dilapidated stone monoliths under a haunting red moonlight. Cinematic tactical HUD lighting accents, claustrophobic and deeply atmospheric paranormal thriller mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo4ZFyrtV4uilMVYKf6iBzzB3R-2SJ4zYj3bGa6LJ366HgXRcI6SqwS14szFYPhBp2uQGY1J6TqyzW-RMoKoTbH0Vr6_ggh_7ESUDF-lAhyl_xsb26agh234WLlbNhGZD_wyflgJlvyRdP1JqFWR_7KAGbtwHdhUTkCxA7DbLabddNrM8eBEsYV7XKVXnBQmgB9sg7TCaxENdkLPiQ7J-42zpBN_Ox6GA6KjpyrOv3O0HBPgAXzVug"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-black/40"></div>
+<!-- Live Counter & Ping Badge -->
+<div class="absolute top-2.5 left-2.5 flex items-center space-x-1.5 bg-surface-container-lowest/80 backdrop-blur-md px-2 py-1 rounded border border-white/10">
+<span class="w-2 h-2 rounded-full bg-[#39FF14] status-pulse"></span>
+<span class="font-label-sm text-[10px] text-white">61.2k playing</span>
+</div>
+<!-- Top-right Favorite Heart Button -->
+<button class="fav-btn active-fav absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md border border-[#FF007A]/40 flex items-center justify-center text-[#FF007A] active:scale-90 transition-all" onclick="toggleFavorite(this, 2)">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2.5 bg-[#FF007A] text-white font-label-sm text-[10px] font-bold px-2 py-0.5 rounded cyber-chamfer">
+                PSYCHOLOGICAL HORROR
+              </div>
+</div>
+<!-- Card Body -->
+<div class="p-3.5 space-y-3">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-headline-sm text-[18px] text-on-surface font-bold leading-snug group-hover:text-[#FF007A] transition-colors">
+                    Silent Hollows: The Ritual
+                  </h3>
+<div class="flex items-center space-x-1.5 mt-0.5">
+<span class="font-label-sm text-[11px] text-on-surface-variant">by VoidGamerz</span>
+</div>
+</div>
+<div class="flex items-center space-x-1 bg-surface-container-high px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px] text-yellow-400" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-[11px] text-white">4.8</span>
+<span class="text-[9px] text-on-surface-variant">(180k)</span>
+</div>
+</div>
+<!-- Meta pills -->
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center space-x-1.5">
+<span class="text-[10px] font-label-sm text-on-surface-variant">DIFFICULTY:</span>
+<div class="flex space-x-1" title="Hardcore Difficulty">
+<span class="w-2 h-2 rounded-full bg-[#FF007A]"></span>
+<span class="w-2 h-2 rounded-full bg-[#FF007A]"></span>
+<span class="w-2 h-2 rounded-full bg-[#FF007A]"></span>
+</div>
+<span class="font-label-sm text-[10px] text-[#FF007A]">HARDCORE</span>
+</div>
+<div class="flex space-x-1">
+<span class="text-[9px] font-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-[#FF007A] border border-[#FF007A]/20">Jumpscares</span>
+<span class="text-[9px] font-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant">Co-Op</span>
+</div>
+</div>
+<!-- Card Action Row -->
+<div class="pt-2 border-t border-white/5 flex items-center justify-between">
+<div>
+<span class="font-label-md text-xs text-[#39FF14] font-bold">FREE TO PLAY</span>
+</div>
+<div class="flex items-center space-x-2">
+<button class="px-2.5 py-1.5 rounded bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-sm text-[10px] border border-white/10 active:scale-95 transition-all" onclick="openMapDetails(2)">
+                    SPEC INTEL
+                  </button>
+<button class="px-3 py-1.5 rounded bg-surface-container-high hover:bg-surface-container-highest border border-[#FF007A]/50 text-white font-label-md text-[11px] active:scale-95 transition-all" onclick="addToCart({id: 2, title: 'Silent Hollows: The Ritual', price: 0, creator: 'VoidGamerz'})">
+                    FREE WARP
+                  </button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3: Infinite Void Parkour: Reborn -->
+<article class="map-card group rounded-lg bg-surface-container-low border border-white/10 hover:border-secondary/60 transition-all duration-200 overflow-hidden shadow-lg" data-category="Parkour Trending Hardcore" data-difficulty="Hard" data-price="150" data-rating="4.7" data-title="Infinite Void Parkour: Reborn">
+<div class="relative w-full h-44 overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="An expansive speedrun parkour obby suspended in a cosmic dark abyss. Floating geometric glass platforms glowing in electric purple and cyan lines stretch across infinite space. Cyber holographic score rings, speed trails, and high-adrenaline acrobatic platforming design in an ultra modern Roblox sci-fi arena." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDgXMdACkOEIdW-Ni2bYlEfrA0xxsHBovpOqVMYAG_lV5qVYMW8gbzbrT0cz3HG4w3Fy--rqwugjKUDAt3R2NzFkcAOpLKZdshuQiHGFaLmGLhLNy66TcD1V_GlUg0MSLcXgXXUFapM-_SCE00YqrSJKCisuK4A_8HUqS_Whmvl56ShQmZnACEkjoEC3sneXYa_0GUx627YUgIudfOi3-98-SETyKdUXZgcvaI74B5rvSBEOTeZYNL"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-black/40"></div>
+<div class="absolute top-2.5 left-2.5 flex items-center space-x-1.5 bg-surface-container-lowest/80 backdrop-blur-md px-2 py-1 rounded border border-white/10">
+<span class="w-2 h-2 rounded-full bg-[#39FF14] status-pulse"></span>
+<span class="font-label-sm text-[10px] text-white">45.0k playing</span>
+</div>
+<button class="fav-btn absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md border border-white/15 flex items-center justify-center text-white hover:text-[#FF007A] active:scale-90 transition-all" onclick="toggleFavorite(this, 3)">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2.5 bg-secondary text-[#2c0051] font-label-sm text-[10px] font-bold px-2 py-0.5 rounded cyber-chamfer">
+                LEADERBOARDS
+              </div>
+</div>
+<div class="p-3.5 space-y-3">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-headline-sm text-[18px] text-on-surface font-bold leading-snug group-hover:text-secondary transition-colors">
+                    Infinite Void Parkour: Reborn
+                  </h3>
+<div class="flex items-center space-x-1.5 mt-0.5">
+<span class="font-label-sm text-[11px] text-on-surface-variant">by SpeedMasters</span>
+</div>
+</div>
+<div class="flex items-center space-x-1 bg-surface-container-high px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px] text-yellow-400" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-[11px] text-white">4.7</span>
+<span class="text-[9px] text-on-surface-variant">(520k)</span>
+</div>
+</div>
+<!-- Meta pills -->
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center space-x-1.5">
+<span class="text-[10px] font-label-sm text-on-surface-variant">DIFFICULTY:</span>
+<div class="flex space-x-1" title="Hard Difficulty">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="w-2 h-2 rounded-full bg-white/20"></span>
+</div>
+<span class="font-label-sm text-[10px] text-secondary">HARD</span>
+</div>
+<div class="flex space-x-1">
+<span class="text-[9px] font-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-secondary border border-secondary/20">Ranked</span>
+<span class="text-[9px] font-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant">Ghost Races</span>
+</div>
+</div>
+<!-- Card Action Row -->
+<div class="pt-2 border-t border-white/5 flex items-center justify-between">
+<div>
+<span class="font-label-md text-xs text-primary-container">⏣ 150 R$</span>
+</div>
+<div class="flex items-center space-x-2">
+<button class="px-2.5 py-1.5 rounded bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-sm text-[10px] border border-white/10 active:scale-95 transition-all" onclick="openMapDetails(3)">
+                    SPEC INTEL
+                  </button>
+<button class="px-3 py-1.5 rounded bg-primary-container hover:bg-primary text-on-primary font-label-md text-[11px] font-bold cyber-chamfer-btn active:scale-95 transition-all" onclick="addToCart({id: 3, title: 'Infinite Void Parkour: Reborn', price: 150, creator: 'SpeedMasters'})">
+                    WARP PASS
+                  </button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 4: Quantum Bunker Survival -->
+<article class="map-card group rounded-lg bg-surface-container-low border border-white/10 hover:border-primary-container/60 transition-all duration-200 overflow-hidden shadow-lg" data-category="Survival Hardcore Verified" data-difficulty="Hardcore" data-price="500" data-rating="4.9" data-title="Quantum Bunker Survival">
+<div class="relative w-full h-44 overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A subterranean, high-tech industrial quantum laboratory bunker in ruins. Massive blast vault doors with flickering amber and cyan tactical monitors, industrial scaffolding, steam vents, and energy containment fields under attack. Gritty cyberpunk aesthetic tailored for intense Roblox tactical survival gameplay." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0KvTd-uzhh6ZibeFTaj_i-vTge0QHEow_9Pnr20vd-PZ0K3gyW-B10yYjQtUBMkeYHtuzuTef3ENI3hAbKZJn0cn2vKldn9rlHp8aQX-bvWC9-bMnrFblaFbWY-_epgs1DCV2FmEv65eZxEClm3GuvSe9guUnVeydNdC1UYHSh8yQJqR6sZ-ggUSa2mQfbIqLqKKfloRjvdZbfXfFP1GbmtQY2pE8h_8q2mynjKELUC0M5h_7ophC"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-black/40"></div>
+<div class="absolute top-2.5 left-2.5 flex items-center space-x-1.5 bg-surface-container-lowest/80 backdrop-blur-md px-2 py-1 rounded border border-white/10">
+<span class="w-2 h-2 rounded-full bg-[#39FF14] status-pulse"></span>
+<span class="font-label-sm text-[10px] text-white">128k playing</span>
+</div>
+<button class="fav-btn active-fav absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md border border-[#FF007A]/40 flex items-center justify-center text-[#FF007A] active:scale-90 transition-all" onclick="toggleFavorite(this, 4)">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2.5 bg-primary-container text-on-primary font-label-sm text-[10px] font-bold px-2 py-0.5 rounded cyber-chamfer">
+                PVE RAID
+              </div>
+</div>
+<div class="p-3.5 space-y-3">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-headline-sm text-[18px] text-on-surface font-bold leading-snug group-hover:text-primary transition-colors">
+                    Quantum Bunker Survival
+                  </h3>
+<div class="flex items-center space-x-1.5 mt-0.5">
+<span class="font-label-sm text-[11px] text-on-surface-variant">by RedStone Forge</span>
+<span class="material-symbols-outlined text-primary-container text-[14px]">verified</span>
+</div>
+</div>
+<div class="flex items-center space-x-1 bg-surface-container-high px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px] text-yellow-400" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-[11px] text-white">4.9</span>
+<span class="text-[9px] text-on-surface-variant">(410k)</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center space-x-1.5">
+<span class="text-[10px] font-label-sm text-on-surface-variant">DIFFICULTY:</span>
+<div class="flex space-x-1" title="Hardcore Difficulty">
+<span class="w-2 h-2 rounded-full bg-[#FF007A]"></span>
+<span class="w-2 h-2 rounded-full bg-[#FF007A]"></span>
+<span class="w-2 h-2 rounded-full bg-[#FF007A]"></span>
+</div>
+<span class="font-label-sm text-[10px] text-[#FF007A]">HARDCORE</span>
+</div>
+<div class="flex space-x-1">
+<span class="text-[9px] font-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-primary-container border border-primary-container/20">Base Raid</span>
+<span class="text-[9px] font-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant">Loot Drops</span>
+</div>
+</div>
+<div class="pt-2 border-t border-white/5 flex items-center justify-between">
+<div>
+<span class="font-label-md text-xs text-primary-container">⏣ 500 R$</span>
+</div>
+<div class="flex items-center space-x-2">
+<button class="px-2.5 py-1.5 rounded bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-sm text-[10px] border border-white/10 active:scale-95 transition-all" onclick="openMapDetails(4)">
+                    SPEC INTEL
+                  </button>
+<button class="px-3 py-1.5 rounded bg-primary-container hover:bg-primary text-on-primary font-label-md text-[11px] font-bold cyber-chamfer-btn active:scale-95 transition-all" onclick="addToCart({id: 4, title: 'Quantum Bunker Survival', price: 500, creator: 'RedStone Forge'})">
+                    WARP PASS
+                  </button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 5: Floating Sky Islands -->
+<article class="map-card group rounded-lg bg-surface-container-low border border-white/10 hover:border-primary-container/60 transition-all duration-200 overflow-hidden shadow-lg" data-category="Adventure Free" data-difficulty="Easy" data-price="0" data-rating="4.6" data-title="Floating Sky Islands">
+<div class="relative w-full h-44 overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A tranquil, dreamlike fantasy archipelago of lush green floating islands high above cloudscapes in Roblox. Crystal waterfalls cascade into the open sky beneath a twin aurora borealis glowing in soft cyan and lilac pastel hues. Serene, magical open-world sandbox vibe with ambient digital particle effects." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpqeX1TQ5nZ2NleHcyl-6QPVFd8EOc46C_gkoEbNhcTLb7Qc1nFlm-RGg9A1SAjOkPn83pHcLBCS-XPB5uoo37wvvhqZxyWnBLQHiApUlyVDBtrVQqkSJNAtlIjHqT-S44pPxY8HLhwT-_lFp11Dsb4U9Z5oDpq0rSC_dcYfObP_vE7UpRPnDrzrdQ5oTwFpXwSqz7tNo-aLMU3dUDIfqSwSQ8XR94VQp71QEQWNgeM2Wl748G25sM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-black/40"></div>
+<div class="absolute top-2.5 left-2.5 flex items-center space-x-1.5 bg-surface-container-lowest/80 backdrop-blur-md px-2 py-1 rounded border border-white/10">
+<span class="w-2 h-2 rounded-full bg-[#39FF14] status-pulse"></span>
+<span class="font-label-sm text-[10px] text-white">98.4k playing</span>
+</div>
+<button class="fav-btn active-fav absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md border border-[#FF007A]/40 flex items-center justify-center text-[#FF007A] active:scale-90 transition-all" onclick="toggleFavorite(this, 5)">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2.5 bg-[#39FF14] text-black font-label-sm text-[10px] font-bold px-2 py-0.5 rounded cyber-chamfer">
+                CHILL SANDBOX
+              </div>
+</div>
+<div class="p-3.5 space-y-3">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-headline-sm text-[18px] text-on-surface font-bold leading-snug group-hover:text-primary transition-colors">
+                    Floating Sky Islands
+                  </h3>
+<div class="flex items-center space-x-1.5 mt-0.5">
+<span class="font-label-sm text-[11px] text-on-surface-variant">by Aetheria</span>
+</div>
+</div>
+<div class="flex items-center space-x-1 bg-surface-container-high px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px] text-yellow-400" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-[11px] text-white">4.6</span>
+<span class="text-[9px] text-on-surface-variant">(98k)</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center space-x-1.5">
+<span class="text-[10px] font-label-sm text-on-surface-variant">DIFFICULTY:</span>
+<div class="flex space-x-1" title="Easy Difficulty">
+<span class="w-2 h-2 rounded-full bg-[#39FF14]"></span>
+<span class="w-2 h-2 rounded-full bg-white/20"></span>
+<span class="w-2 h-2 rounded-full bg-white/20"></span>
+</div>
+<span class="font-label-sm text-[10px] text-[#39FF14]">EASY</span>
+</div>
+<div class="flex space-x-1">
+<span class="text-[9px] font-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-primary-fixed border border-primary-container/20">Glider Gear</span>
+<span class="text-[9px] font-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant">Pets</span>
+</div>
+</div>
+<div class="pt-2 border-t border-white/5 flex items-center justify-between">
+<div>
+<span class="font-label-md text-xs text-[#39FF14] font-bold">FREE TO PLAY</span>
+</div>
+<div class="flex items-center space-x-2">
+<button class="px-2.5 py-1.5 rounded bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-sm text-[10px] border border-white/10 active:scale-95 transition-all" onclick="openMapDetails(5)">
+                    SPEC INTEL
+                  </button>
+<button class="px-3 py-1.5 rounded bg-surface-container-high hover:bg-surface-container-highest border border-white/20 text-white font-label-md text-[11px] active:scale-95 transition-all" onclick="addToCart({id: 5, title: 'Floating Sky Islands', price: 0, creator: 'Aetheria'})">
+                    FREE WARP
+                  </button>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Shared Component Anchored: Explore active destination -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter-sm h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-2xl max-w-[430px] mx-auto right-0">
+<!-- Destination 1: Explore (Active) -->
+<a class="flex flex-col items-center justify-center text-primary-container font-label-sm text-label-sm" href="#explore">
+<span class="material-symbols-outlined text-[22px]">explore</span>
+<span class="mt-0.5">Explore</span>
+</a>
+<!-- Destination 2: Portals -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors" href="#portals" onclick="window.scrollTo({top: 400, behavior: 'smooth'}); return false;">
+<span class="material-symbols-outlined text-[22px]">travel_explore</span>
+<span class="mt-0.5">Portals</span>
+</a>
+<!-- Destination 3: Warp Quiz -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors" href="#quiz" onclick="window.scrollTo({top: 280, behavior: 'smooth'}); return false;">
+<span class="material-symbols-outlined text-[22px]">psychology</span>
+<span class="mt-0.5">Warp Quiz</span>
+</a>
+<!-- Destination 4: Inventory / Bag -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-label-sm text-label-sm hover:text-primary transition-colors" href="#inventory" onclick="toggleCartDrawer(true); return false;">
+<span class="material-symbols-outlined text-[22px]">inventory_2</span>
+<span class="mt-0.5">Inventory</span>
+</a>
+</nav>
+<!-- Section 5: Interactive Map Detail View (Modal Dialog) -->
+<div class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity duration-300" id="mapDetailModal">
+<div class="w-full max-w-[430px] max-h-[795px] bg-surface-container-low rounded-t-2xl sm:rounded-xl border border-primary-container/40 overflow-hidden flex flex-col shadow-2xl animate-in slide-in-from-bottom-6">
+<!-- Modal Hero Image with gradient overlay -->
+<div class="relative h-52 w-full bg-surface-container-highest shrink-0">
+<img class="w-full h-full object-cover" data-alt="A breathtaking, cinematic vista of high-tier Roblox cyberpunk metropolis with glistening cybernetic towers, cascading volumetric neon cyan light grids, and bustling hover-traffic over obsidian futuristic city streets. Tactical HUD telemetry overlays and crisp geometric gaming architecture." id="modalHeroImg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv3cWCx-8z1VlQJXhs_QSLyq4gn95YjAiV-EoN0TzTbbQsbF4CqVRBtHyE_BNPLVs1mMpCL3IeNoW80aA-KPihY8jn2TEDrnWoKx5NFwxMZf58PfEcA6dU5P5Aqo6Ek32Lj7XPkc4Y9OKtaGvgtjx3NsrJTgMZuiL3oB2NAYfsFaRo3tcK033q_JKEQvqN1-XDWTyQQJ3yFaV8nmfOOJnxhq2lzN2GqjvxBV69UGWrJaUzljR-K_YN"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-black/60"></div>
+<!-- Close button -->
+<button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black/90 active:scale-90 transition-all border border-white/20" onclick="closeMapDetails()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<!-- Badge: Verified Studio -->
+<div class="absolute bottom-3 left-4 flex items-center space-x-1.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur border border-primary-container/40">
+<span class="material-symbols-outlined text-primary-container text-[14px]">verified</span>
+<span class="font-label-sm text-[10px] text-primary-fixed" id="modalCreatorBadge">Verified Roblox Creator Studio</span>
+</div>
+</div>
+<!-- Modal Body & Telemetry Data -->
+<div class="p-4 space-y-4 overflow-y-auto hide-scrollbar flex-1">
+<div>
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold" id="modalTitle">Neon Cyberpunk 2099: Underworld</h2>
+<span class="font-label-md text-xs text-primary-container font-bold" id="modalPriceBadge">⏣ 350 R$</span>
+</div>
+<p class="font-body-sm text-xs text-on-surface-variant mt-1" id="modalShortDesc">
+              Immerse your crew in the underworld of Neo-Shinjuku. Complete syndicate heist contracts, upgrade custom cyberware weapons, and wage clan wars in realtime.
+            </p>
+</div>
+<!-- Specifications HUD Matrix -->
+<div class="space-y-1.5">
+<p class="font-label-sm text-[10px] text-on-surface-variant tracking-wider uppercase">DIMENSIONAL METRICS &amp; SPECS</p>
+<div class="grid grid-cols-2 gap-2 text-xs">
+<div class="p-2 rounded bg-surface-container border border-white/10 flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary-container text-[18px]">group</span>
+<div>
+<p class="text-[9px] text-on-surface-variant font-label-sm">MAX CAPACITY</p>
+<p class="font-label-md text-[11px] text-on-surface">50 Players / Server</p>
+</div>
+</div>
+<div class="p-2 rounded bg-surface-container border border-white/10 flex items-center space-x-2">
+<span class="material-symbols-outlined text-[#39FF14] text-[18px]">speed</span>
+<div>
+<p class="text-[9px] text-on-surface-variant font-label-sm">SERVER TICKRATE</p>
+<p class="font-label-md text-[11px] text-on-surface">60Hz High-Fidelity</p>
+</div>
+</div>
+<div class="p-2 rounded bg-surface-container border border-white/10 flex items-center space-x-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">sports_martial_arts</span>
+<div>
+<p class="text-[9px] text-on-surface-variant font-label-sm">PHYSICS ENGINE</p>
+<p class="font-label-md text-[11px] text-on-surface">Custom Ragdoll v3</p>
+</div>
+</div>
+<div class="p-2 rounded bg-surface-container border border-white/10 flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary-container text-[18px]">surround_sound</span>
+<div>
+<p class="text-[9px] text-on-surface-variant font-label-sm">AUDIO SPATIAL</p>
+<p class="font-label-md text-[11px] text-on-surface">3D Raytraced Audio</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Community Ratings & Reviews Intel -->
+<div class="p-3 rounded bg-surface-container border border-white/10 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="text-center">
+<p class="font-headline-sm text-2xl text-yellow-400 font-bold leading-none">4.9</p>
+<div class="flex text-yellow-400 text-xs mt-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="text-xs">
+<p class="font-label-md text-[11px] text-white">94% Positive Feedback</p>
+<p class="font-body-sm text-[10px] text-on-surface-variant">Over 342,000 verified player ratings</p>
+</div>
+</div>
+<span class="font-label-sm text-[10px] text-primary-fixed bg-surface-container-highest px-2 py-1 rounded">VERIFIED</span>
+</div>
+<!-- Action Bar within Modal -->
+<div class="pt-2 flex items-center space-x-2">
+<button class="flex-1 py-3 px-4 rounded bg-primary-container text-on-primary font-label-md text-xs font-bold uppercase tracking-wider cyber-chamfer-btn hover:bg-primary transition-all active:scale-95 shadow glow-cyan" id="modalActionBtn" onclick="buyFromModal()">
+              Instant Teleport / Acquire License
+            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 6: Slide-Over Warp Bag / Cart Drawer -->
+<div class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex justify-end" id="cartDrawer">
+<div class="w-full max-w-[380px] h-full bg-surface-container-low border-l border-primary-container/40 p-4 flex flex-col justify-between shadow-2xl animate-in slide-in-from-right duration-200">
+<!-- Drawer Header -->
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-white/10">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">shopping_bag</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">WARP INVENTORY</span>
+</div>
+<button class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center text-on-surface hover:text-white" onclick="toggleCartDrawer(false)">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Robux Status Card -->
+<div class="my-3 p-2.5 rounded bg-surface-container border border-white/10 flex items-center justify-between text-xs">
+<span class="font-label-sm text-on-surface-variant">YOUR ROBUX BALANCE:</span>
+<span class="font-label-md text-primary-container font-bold">⏣ 14,850 R$</span>
+</div>
+<!-- Cart Items List -->
+<div class="space-y-2.5 max-h-[406px] overflow-y-auto hide-scrollbar py-1" id="cartItemsContainer">
+<!-- Rendered dynamically via JS -->
+</div>
+</div>
+<!-- Checkout Summary & Confirmation Action -->
+<div class="pt-3 border-t border-white/10 space-y-3">
+<!-- Coupon Input Form -->
+<div class="flex items-center space-x-1.5">
+<input class="w-full bg-surface-container px-2.5 py-1.5 text-xs text-on-surface placeholder:text-on-surface-variant/50 rounded border border-white/15 focus:outline-none focus:border-primary-container uppercase font-label-sm" id="promoCodeInput" placeholder="Promo Code (e.g. ROBLOX2025)" type="text"/>
+<button class="px-3 py-1.5 bg-surface-container-high hover:bg-surface-container-highest border border-white/20 rounded font-label-sm text-[11px] text-primary whitespace-nowrap active:scale-95 transition-all" onclick="applyPromoCode()">
+              APPLY
+            </button>
+</div>
+<p class="font-label-sm text-[10px] hidden" id="promoFeedback"></p>
+<!-- Financial Breakdown -->
+<div class="space-y-1 text-xs">
+<div class="flex justify-between text-on-surface-variant font-label-sm">
+<span>SUBTOTAL:</span>
+<span class="font-label-md text-white" id="cartSubtotal">⏣ 850 R$</span>
+</div>
+<div class="hidden flex justify-between text-[#39FF14] font-label-sm" id="discountRow">
+<span>VIP PROMO (20% OFF):</span>
+<span id="cartDiscount">-⏣ 170 R$</span>
+</div>
+<div class="flex justify-between font-label-md text-sm text-primary pt-1 border-t border-white/10">
+<span class="font-bold">TOTAL REQUIRED:</span>
+<span class="text-primary-container font-bold" id="cartTotal">⏣ 850 R$</span>
+</div>
+</div>
+<!-- Teleport Confirm Button -->
+<button class="w-full py-3.5 px-4 rounded bg-primary-container hover:bg-primary text-on-primary font-label-md text-xs font-bold uppercase tracking-wider cyber-chamfer-btn active:scale-95 transition-all glow-cyan flex items-center justify-center space-x-2" onclick="initiateTeleportSequence()">
+<span class="material-symbols-outlined text-[18px]">csv</span>
+<span>CONFIRM TELEPORT WARP</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Section 7: Teleport Celebration Overlay (Fullscreen Holographic Sequence) -->
+<div class="hidden fixed inset-0 z-[60] bg-black/95 backdrop-blur-2xl flex flex-col items-center justify-center p-6 text-center overflow-hidden" id="teleportCelebration">
+<!-- Warp rays animated effect -->
+<div class="absolute inset-0 pointer-events-none opacity-40 bg-[radial-gradient(circle_at_center,_rgba(0,240,255,0.4)_0%,_transparent_70%)]"></div>
+<div class="absolute w-1 h-full bg-gradient-to-b from-transparent via-primary-container to-transparent animate-warp-rays"></div>
+<div class="relative z-10 space-y-4 max-w-xs animate-in zoom-in-90 duration-300">
+<div class="relative mx-auto w-24 h-24 flex items-center justify-center">
+<div class="absolute inset-0 rounded-full border-2 border-primary-container animate-ping opacity-75"></div>
+<div class="w-20 h-20 rounded-full bg-surface-container-high border-2 border-primary-container glow-cyan flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-[40px]">rocket_launch</span>
+</div>
+</div>
+<div>
+<span class="font-label-sm text-[11px] text-[#39FF14] tracking-widest uppercase">DIMENSION LOCK ACQUIRED</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile font-black text-primary uppercase mt-1">WARP SEQUENCE INITIATED</h2>
+<p class="font-body-sm text-xs text-on-surface-variant mt-2">
+            Holographic frequency synchronized. Roblox client handoff ready. Prepare for dimensional transition!
+          </p>
+</div>
+<!-- Simulated sound wave visualizer -->
+<div class="flex items-center justify-center space-x-1.5 h-6">
+<span class="w-1 h-4 bg-primary-container rounded status-pulse"></span>
+<span class="w-1 h-6 bg-secondary rounded animate-pulse"></span>
+<span class="w-1 h-3 bg-[#FF007A] rounded status-pulse"></span>
+<span class="w-1 h-5 bg-primary-container rounded animate-pulse"></span>
+<span class="w-1 h-2 bg-[#39FF14] rounded status-pulse"></span>
+</div>
+<button class="w-full py-3 rounded bg-primary-container text-on-primary font-label-md text-xs font-bold uppercase tracking-wider cyber-chamfer-btn hover:bg-primary transition-all active:scale-95 shadow glow-cyan" onclick="dismissTeleportCelebration()">
+          LAUNCH IN ROBLOX APP
+        </button>
+</div>
+</div>
+<!-- Notification Toast HUD -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-opacity duration-300 bg-surface-container-high/90 backdrop-blur-md border border-primary-container px-3.5 py-2 rounded text-xs font-label-md text-primary flex items-center space-x-2 shadow-xl glow-cyan" id="hudToast">
+<span class="material-symbols-outlined text-[16px] text-primary-container">info</span>
+<span id="toastMessage">HUD Signal Synced</span>
+</div>
+</div>
+<!-- Inline Vanilla Interactive System Script -->
+<script>
+    // State storage
+    const state = {
+      favoritesCount: 3,
+      cart: [
+        { id: 1, title: 'Neon Cyberpunk 2099', price: 350, creator: 'NexusBuilds' },
+        { id: 4, title: 'Quantum Bunker Survival', price: 500, creator: 'RedStone Forge' }
+      ],
+      soundMuted: false,
+      quizAnswers: { mood: '', skill: '', duration: '' },
+      promoDiscount: 0,
+      activeModalMapId: 1
+    };
+
+    // Experience Intel Library
+    const mapArchive = {
+      1: {
+        title: "Neon Cyberpunk 2099: Underworld",
+        creator: "NexusBuilds",
+        verified: true,
+        price: 350,
+        rating: "4.9",
+        reviews: "342k",
+        desc: "Raytraced vertical megacity with high-speed hovercraft chases, custom augment loadouts, and syndicate clan heists."
+      },
+      2: {
+        title: "Silent Hollows: The Ritual",
+        creator: "VoidGamerz",
+        verified: false,
+        price: 0,
+        rating: "4.8",
+        reviews: "180k",
+        desc: "Chilling psychological horror with procedurally placed crypts, sanity mechanics, and 4-player cooperative ghost hunts."
+      },
+      3: {
+        title: "Infinite Void Parkour: Reborn",
+        creator: "SpeedMasters",
+        verified: false,
+        price: 150,
+        rating: "4.7",
+        reviews: "520k",
+        desc: "High-speed neon obstacle course with competitive leaderboards, dynamic gravity zones, and time trial tournaments."
+      },
+      4: {
+        title: "Quantum Bunker Survival",
+        creator: "RedStone Forge",
+        verified: true,
+        price: 500,
+        rating: "4.9",
+        reviews: "410k",
+        desc: "Subterranean post-apocalyptic bunker raid. Build defensive automated turrets, craft heavy armor, and repel alien breaches."
+      },
+      5: {
+        title: "Floating Sky Islands",
+        creator: "Aetheria",
+        verified: false,
+        price: 0,
+        rating: "4.6",
+        reviews: "98k",
+        desc: "Dreamy fantasy exploration archipelago with glider mechanics, celestial companions, and community social hangouts."
+      }
+    };
+
+    // Helper: Toast HUD Notification
+    function showToast(msg) {
+      const toast = document.getElementById('hudToast');
+      const text = document.getElementById('toastMessage');
+      text.textContent = msg;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 2200);
+    }
+
+    // SFX Toggle
+    document.getElementById('sfxBtn').addEventListener('click', () => {
+      state.soundMuted = !state.soundMuted;
+      const icon = document.getElementById('sfxIcon');
+      icon.textContent = state.soundMuted ? 'volume_off' : 'volume_up';
+      showToast(state.soundMuted ? 'Audio Telemetry Muted' : 'Audio SFX Active');
+    });
+
+    // Favorites Toggle
+    function toggleFavorite(btn, mapId) {
+      const icon = btn.querySelector('.material-symbols-outlined');
+      const isFav = btn.classList.contains('active-fav');
+      
+      if (isFav) {
+        btn.classList.remove('active-fav', 'text-[#FF007A]', 'border-[#FF007A]/40');
+        btn.classList.add('text-white', 'border-white/15');
+        icon.style.fontVariationSettings = "'FILL' 0";
+        state.favoritesCount = Math.max(0, state.favoritesCount - 1);
+        showToast('Portal removed from favorites');
+      } else {
+        btn.classList.add('active-fav', 'text-[#FF007A]', 'border-[#FF007A]/40');
+        btn.classList.remove('text-white', 'border-white/15');
+        icon.style.fontVariationSettings = "'FILL' 1";
+        state.favoritesCount += 1;
+        showToast('Portal pinned to favorites');
+      }
+      
+      document.getElementById('wishlistCountBadge').textContent = state.favoritesCount;
+    }
+
+    // Wishlist Trigger
+    document.getElementById('wishlistTriggerBtn').addEventListener('click', () => {
+      showToast(`${state.favoritesCount} Portals bookmarked in your telemetry`);
+    });
+
+    // Hub Trigger
+    document.getElementById('hubTriggerBtn').addEventListener('click', () => {
+      showToast('MAPVERSE Node #01: Operational');
+    });
+
+    // Search Query & Auto-Suggestions
+    const searchInput = document.getElementById('dimensionSearchInput');
+    const searchSuggestions = document.getElementById('searchSuggestions');
+    const clearBtn = document.getElementById('clearSearchBtn');
+
+    searchInput.addEventListener('input', (e) => {
+      const val = e.target.value.trim().toLowerCase();
+      clearBtn.classList.toggle('hidden', val.length === 0);
+      searchSuggestions.classList.toggle('hidden', val.length === 0);
+      filterCardsBySearch(val);
+    });
+
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      clearBtn.classList.add('hidden');
+      searchSuggestions.classList.add('hidden');
+      filterCardsBySearch('');
+    });
+
+    document.querySelectorAll('.suggestion-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const query = item.getAttribute('data-value');
+        searchInput.value = query;
+        searchSuggestions.classList.add('hidden');
+        clearBtn.classList.remove('hidden');
+        filterCardsBySearch(query.toLowerCase());
+      });
+    });
+
+    function filterCardsBySearch(term) {
+      const cards = document.querySelectorAll('.map-card');
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const title = card.getAttribute('data-title').toLowerCase();
+        const category = card.getAttribute('data-category').toLowerCase();
+        if (title.includes(term) || category.includes(term)) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+      document.getElementById('filteredCountText').textContent = `${visibleCount} AVAILABLE`;
+    }
+
+    // Filter Chips Matrix
+    function filterCategory(cat) {
+      document.querySelectorAll('.category-filter-btn').forEach(btn => {
+        const isMatch = btn.getAttribute('data-cat') === cat;
+        if (isMatch) {
+          btn.className = "category-filter-btn shrink-0 px-3 py-1.5 rounded font-label-sm text-[11px] bg-primary-container text-on-primary font-bold border border-primary-container shadow-sm transition-all";
+        } else {
+          btn.className = "category-filter-btn shrink-0 px-3 py-1.5 rounded font-label-sm text-[11px] bg-surface-container text-on-surface-variant hover:text-white border border-white/10 hover:border-white/30 transition-all";
+        }
+      });
+
+      const cards = document.querySelectorAll('.map-card');
+      let visible = 0;
+      cards.forEach(card => {
+        const cardCats = card.getAttribute('data-category');
+        if (cat === 'All' || cardCats.includes(cat)) {
+          card.classList.remove('hidden');
+          visible++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+      document.getElementById('filteredCountText').textContent = `${visible} AVAILABLE`;
+    }
+
+    // Quick-Warp Horizon Chips Filter
+    document.querySelectorAll('.portal-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const filterKey = chip.getAttribute('data-filter');
+        showToast(`Warping to ${filterKey} Frequencies...`);
+        filterCardsBySearch(filterKey.toLowerCase());
+      });
+    });
+
+    // Sorting Functionality
+    function applySorting(sortVal) {
+      const container = document.getElementById('mapCardsGrid');
+      const cards = Array.from(container.querySelectorAll('.map-card'));
+
+      cards.sort((a, b) => {
+        if (sortVal === 'rating') {
+          return parseFloat(b.getAttribute('data-rating')) - parseFloat(a.getAttribute('data-rating'));
+        } else if (sortVal === 'price-asc') {
+          return parseInt(a.getAttribute('data-price')) - parseInt(b.getAttribute('data-price'));
+        } else {
+          // popularity fallback
+          return 0;
+        }
+      });
+
+      cards.forEach(card => container.appendChild(card));
+      showToast(`Sorted by ${sortVal.toUpperCase()}`);
+    }
+
+    // 3-Step Interactive Warp Quiz
+    function handleQuizAnswer(step, answer) {
+      if (step === 1) {
+        state.quizAnswers.mood = answer;
+        document.getElementById('quizStep1').classList.add('hidden');
+        document.getElementById('quizStep2').classList.remove('hidden');
+        document.getElementById('quizStepIndicator').textContent = 'STEP 2 / 3';
+        document.getElementById('quizProgressBar').style.width = '66%';
+      } else if (step === 2) {
+        state.quizAnswers.skill = answer;
+        document.getElementById('quizStep2').classList.add('hidden');
+        document.getElementById('quizStep3').classList.remove('hidden');
+        document.getElementById('quizStepIndicator').textContent = 'STEP 3 / 3';
+        document.getElementById('quizProgressBar').style.width = '99%';
+      } else if (step === 3) {
+        state.quizAnswers.duration = answer;
+        document.getElementById('quizStep3').classList.add('hidden');
+        document.getElementById('quizLoading').classList.remove('hidden');
+        document.getElementById('quizStepIndicator').textContent = 'WARPING...';
+
+        setTimeout(() => {
+          document.getElementById('quizLoading').classList.add('hidden');
+          document.getElementById('quizResult').classList.remove('hidden');
+          document.getElementById('quizStepIndicator').textContent = 'MATCHED';
+          
+          // Match decision logic
+          if (state.quizAnswers.mood === 'Horror') {
+            document.getElementById('quizResultTitle').textContent = "Silent Hollows: The Ritual";
+            document.getElementById('quizResultDesc').textContent = "Deep atmospheric horror matching your dark terror requirement.";
+          } else if (state.quizAnswers.mood === 'Skill') {
+            document.getElementById('quizResultTitle').textContent = "Infinite Void Parkour: Reborn";
+            document.getElementById('quizResultDesc').textContent = "Precision mechanics and competitive obstacle trials.";
+          } else {
+            document.getElementById('quizResultTitle').textContent = "Neon Cyberpunk 2099: Underworld";
+            document.getElementById('quizResultDesc').textContent = "Dynamic adrenaline city raid aligned with your playtime preferences.";
+          }
+        }, 1100);
+      }
+    }
+
+    function resetQuiz() {
+      state.quizAnswers = { mood: '', skill: '', duration: '' };
+      document.getElementById('quizResult').classList.add('hidden');
+      document.getElementById('quizStep1').classList.remove('hidden');
+      document.getElementById('quizStepIndicator').textContent = 'STEP 1 / 3';
+      document.getElementById('quizProgressBar').style.width = '33%';
+    }
+
+    // Map Detail Modal
+    function openMapDetails(id) {
+      const data = mapArchive[id];
+      if (!data) return;
+      state.activeModalMapId = id;
+
+      document.getElementById('modalTitle').textContent = data.title;
+      document.getElementById('modalPriceBadge').textContent = data.price === 0 ? 'FREE' : `⏣ ${data.price} R$`;
+      document.getElementById('modalShortDesc').textContent = data.desc;
+      document.getElementById('modalCreatorBadge').textContent = `${data.creator} [Verified Studio]`;
+
+      document.getElementById('mapDetailModal').classList.remove('hidden');
+    }
+
+    function closeMapDetails() {
+      document.getElementById('mapDetailModal').classList.add('hidden');
+    }
+
+    function buyFromModal() {
+      const data = mapArchive[state.activeModalMapId];
+      if (data) {
+        addToCart({ id: state.activeModalMapId, title: data.title, price: data.price, creator: data.creator });
+        closeMapDetails();
+        toggleCartDrawer(true);
+      }
+    }
+
+    // Warp Bag / Cart Drawer Logic
+    const cartDrawer = document.getElementById('cartDrawer');
+    const cartDrawerBtn = document.getElementById('cartDrawerBtn');
+
+    cartDrawerBtn.addEventListener('click', () => toggleCartDrawer(true));
+
+    function toggleCartDrawer(open) {
+      if (open) {
+        renderCart();
+        cartDrawer.classList.remove('hidden');
+      } else {
+        cartDrawer.classList.add('hidden');
+      }
+    }
+
+    function addToCart(item) {
+      const exists = state.cart.some(i => i.id === item.id);
+      if (!exists) {
+        state.cart.push(item);
+        showToast(`${item.title} added to Warp Bag`);
+      } else {
+        showToast(`${item.title} is already queued`);
+      }
+      updateCartUI();
+    }
+
+    function removeCartItem(id) {
+      state.cart = state.cart.filter(item => item.id !== id);
+      renderCart();
+      updateCartUI();
+      showToast('Item unlinked from portal');
+    }
+
+    function updateCartUI() {
+      const count = state.cart.length;
+      document.getElementById('cartCountBadge').textContent = count;
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cartItemsContainer');
+      container.innerHTML = '';
+
+      if (state.cart.length === 0) {
+        container.innerHTML = `
+          <div class="py-8 text-center text-on-surface-variant font-label-sm text-xs">
+            <span class="material-symbols-outlined text-[32px] text-white/20 mb-1">inventory_2</span>
+            <p>Your Warp Bag is empty</p>
+          </div>
+        `;
+        document.getElementById('cartSubtotal').textContent = '⏣ 0 R$';
+        document.getElementById('cartTotal').textContent = '⏣ 0 R$';
+        return;
+      }
+
+      let subtotal = 0;
+      state.cart.forEach(item => {
+        subtotal += item.price;
+        const div = document.createElement('div');
+        div.className = "p-2.5 rounded bg-surface-container border border-white/10 flex items-center justify-between";
+        div.innerHTML = `
+          <div>
+            <p class="font-headline-sm text-xs text-on-surface font-bold">${item.title}</p>
+            <p class="text-[10px] text-on-surface-variant font-label-sm">${item.creator} • ${item.price === 0 ? 'FREE' : item.price + ' R$'}</p>
+          </div>
+          <button onclick="removeCartItem(${item.id})" class="text-on-surface-variant hover:text-[#FF007A] p-1">
+            <span class="material-symbols-outlined text-[16px]">delete</span>
+          </button>
+        `;
+        container.appendChild(div);
+      });
+
+      const discountAmount = Math.round(subtotal * state.promoDiscount);
+      const total = Math.max(0, subtotal - discountAmount);
+
+      document.getElementById('cartSubtotal').textContent = `⏣ ${subtotal} R$`;
+      document.getElementById('cartTotal').textContent = `⏣ ${total} R$`;
+
+      if (state.promoDiscount > 0) {
+        document.getElementById('discountRow').classList.remove('hidden');
+        document.getElementById('cartDiscount').textContent = `-⏣ ${discountAmount} R$`;
+      } else {
+        document.getElementById('discountRow').classList.add('hidden');
+      }
+    }
+
+    function applyPromoCode() {
+      const code = document.getElementById('promoCodeInput').value.trim().toUpperCase();
+      const feedback = document.getElementById('promoFeedback');
+
+      if (code === 'ROBLOX2025') {
+        state.promoDiscount = 0.20;
+        feedback.className = "font-label-sm text-[10px] text-[#39FF14]";
+        feedback.textContent = "VIP DISCOUNT 20% ACTIVATED";
+        feedback.classList.remove('hidden');
+        renderCart();
+        showToast("Coupon Applied: 20% Discount");
+      } else {
+        feedback.className = "font-label-sm text-[10px] text-[#FF007A]";
+        feedback.textContent = "INVALID OR EXPIRED WARP CIPHER";
+        feedback.classList.remove('hidden');
+      }
+    }
+
+    // Teleportation Sequence Checkout
+    function initiateTeleportSequence() {
+      toggleCartDrawer(false);
+      const celebration = document.getElementById('teleportCelebration');
+      celebration.classList.remove('hidden');
+      showToast('Warp Sequence Initiated!');
+    }
+
+    function dismissTeleportCelebration() {
+      document.getElementById('teleportCelebration').classList.add('hidden');
+      showToast('Redirecting to Roblox Player...');
+    }
+
+    // Initial sync
+    updateCartUI();
+  </script>
+</body></html>
